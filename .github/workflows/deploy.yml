@@ -6,9 +6,13 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+  EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+  EMAILJS_USER_ID: ${{ secrets.EMAILJS_USER_ID }}
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
     
     steps:

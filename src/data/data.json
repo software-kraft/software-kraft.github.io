@@ -1,16 +1,16 @@
 {
     "Header": {
 
-        "title": "We are a Landing Page",
-        "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum."
+        "title": "Development made simple",
+        "paragraph": "We answer to business requirements and transform them into practical and customized solutions."
 
     },
     "About": {
-        "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "paragraph": "We are the experience of many years of work in different sectors and in different technologies. Always taking care of the technological aspect as well as the relationship with customers. It's not just about delivering software, it's about providing a mutually satisfying and collaborative experience with our customers.",
         "Why": [
-            "Lorem ipsum dolor",
-            "Tempor incididunt",
-            "Lorem ipsum dolor",
+            "Agility",
+            "Flexibility",
+            "Personalised service",
             "Incididunt ut labore"
         ],
         "Why2": [
@@ -85,32 +85,24 @@
         }
     ],
     "Team": [{
-            "img": "img/team/01.jpg",
-            "name": "John Doe",
+            "img": "img/team/jose.jpg",
+            "name": "Jose Riquelme",
             "job": "Director"
         },
         {
-            "img": "img/team/02.jpg",
-            "name": "Mike Doe",
-            "job": "Senior Designer"
-        }, {
-            "img": "img/team/03.jpg",
-            "name": "Jane Doe",
-            "job": "Senior Designer"
-        },
-        {
-            "img": "img/team/04.jpg",
-            "name": "Karen Doe",
-            "job": "Project Manager"
-        }
+            "img": "img/team/jakub.jpg",
+            "name": "Jakub Nieznalski",
+            "job": "CTO"
+        } 
+        
     ],
     "Contact": {
-        "address": "4321 California St, San Francisco, CA 12345 ",
-        "phone": "+1 123 456 1234",
-        "email": "info@company.com",
-        "facebook": "fb.com",
-        "twitter": "twitter.com",
-        "youtube": "youtube.com"
+        "address": "Knotestr. 16, 81479 - Munich",
+        "phone": "",
+        "email": "info@software-kraft.com",
+        "facebook": "",
+        "twitter": "",
+        "youtube": ""
     },
     "Features": [{
             "icon": "fa fa-comments-o",

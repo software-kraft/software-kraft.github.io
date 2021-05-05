@@ -522,6 +522,10 @@ color: #777;
 .form-control:-ms-input-placeholder {
 color: #777;
 }
+#contact a, a:hover, a:focus {
+	color: rgba(255,255,255,.75);
+}
+
 #contact .contact-item {
 	margin: 20px 0;
 }

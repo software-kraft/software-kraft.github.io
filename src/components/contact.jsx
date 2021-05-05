@@ -1,13 +1,22 @@
 import { useState } from 'react'
 import emailjs from 'emailjs-com'
+import Obfuscate from 'react-obfuscate';
 
 const initialState = {
   name: '',
   email: '',
   message: '',
 }
+
+const emailjs_service_id = process.env.EMAILJS_SERVICE_ID
+const emailjs_template_id = process.env.EMAILJS_TEMPLATE_ID
+const emailjs_user_id = process.env.EMAILJS_USER_ID
+
 export const Contact = (props) => {
-  const [{ name, email, message }, setState] = useState(initialState)
+  const [, setState] = useState(initialState)
+  const [isSent, setSent] = useState(false)
+  const [isSending, setSending] = useState(false)
+  const [isError, setError] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -16,19 +25,25 @@ export const Contact = (props) => {
   const clearState = () => setState({ ...initialState })
 
   const handleSubmit = (e) => {
+    setError(false)
+    setSent(false)
+    setSending(true)
+
     e.preventDefault()
-    console.log(name, email, message)
+    
     emailjs
       .sendForm(
-        'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID'
+        emailjs_service_id, emailjs_template_id, e.target, emailjs_user_id
       )
       .then(
         (result) => {
-          console.log(result.text)
           clearState()
+          setSent(true)
+          setSending(false)
         },
         (error) => {
-          console.log(error.text)
+          clearState()
+          setError(true)
         }
       )
   }
@@ -45,6 +60,7 @@ export const Contact = (props) => {
                   get back to you as soon as possible.
                 </p>
               </div>
+
               <form name='sentMessage' validate onSubmit={handleSubmit}>
                 <div className='row'>
                   <div className='col-md-6'>
@@ -88,9 +104,27 @@ export const Contact = (props) => {
                   ></textarea>
                   <p className='help-block text-danger'></p>
                 </div>
-                <div id='success'></div>
-                <button type='submit' className='btn btn-custom btn-lg'>
+                { isSent && (
+                  <div id='success'>
+                    <i className='fa fa-check'></i> form sent successfully
+                  </div>
+                )}
+                { isError && (
+                  <div id='error'>
+                    <i className='fa fa-exclamation-triangle'></i> Something went wrong, please contact using our email address
+                  </div>
+                )}
+                 
+
+                <button 
+                  type='submit' 
+                  className='btn btn-custom btn-lg'
+                  disabled={isSending}>
                   Send Message
+                  {' '}
+                  {isSending && (
+                    <i className="fa fa-cog fa-spin"></i>
+                  )}  
                 </button>
               </form>
             </div>
@@ -105,52 +139,66 @@ export const Contact = (props) => {
                 {props.data ? props.data.address : 'loading'}
               </p>
             </div>
-            <div className='contact-item'>
-              <p>
-                <span>
-                  <i className='fa fa-phone'></i> Phone
-                </span>{' '}
-                {props.data ? props.data.phone : 'loading'}
-              </p>
-            </div>
-            <div className='contact-item'>
-              <p>
-                <span>
-                  <i className='fa fa-envelope-o'></i> Email
-                </span>{' '}
-                {props.data ? props.data.email : 'loading'}
-              </p>
-            </div>
+            { props?.data?.phone &&
+              (<div className='contact-item'>
+                <p>
+                  <span>
+                    <i className='fa fa-phone'></i> Phone
+                  </span>{' '}
+                  {props.data ? props.data.phone : 'loading'}
+                </p>
+              </div>)}
+            { props?.data?.email && 
+              (<div className='contact-item'>
+                <p>
+                  <span>
+                    <i className='fa fa-envelope-o'></i> Email
+                  </span>{' '}
+                  <Obfuscate
+                    email={props.data.email}
+                    headers={{
+                      subject: 'Contact',
+                      body: 'Hi there!',
+                    }}
+                  />
+                </p>
+              </div>)}
           </div>
-          <div className='col-md-12'>
-            <div className='row'>
-              <div className='social'>
-                <ul>
-                  <li>
-                    <a href={props.data ? props.data.facebook : '/'}>
-                      <i className='fa fa-facebook'></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={props.data ? props.data.twitter : '/'}>
-                      <i className='fa fa-twitter'></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={props.data ? props.data.youtube : '/'}>
-                      <i className='fa fa-youtube'></i>
-                    </a>
-                  </li>
-                </ul>
+          { (props?.data?.facebook || 
+              props?.data?.twitter ||
+              props?.data?.youtube ) && 
+            (<div className='col-md-12'>
+              <div className='row'>
+                <div className='social'>
+                  <ul>
+                    { props?.data?.facebook && 
+                      (<li>
+                        <a href={props.data.facebook}>
+                          <i className='fa fa-facebook'></i>
+                        </a>
+                      </li>)}
+                    {props?.data?.twitter &&  
+                      (<li>
+                        <a href={props.data.twitter}>
+                          <i className='fa fa-twitter'></i>
+                        </a>
+                      </li>)}
+                    {props?.data?.youtube &&  
+                      (<li>
+                        <a href={props.data.youtube}>
+                          <i className='fa fa-youtube'></i>
+                        </a>
+                      </li>)}
+                  </ul>
+                </div>
               </div>
-            </div>
-          </div>
+            </div> )}
         </div>
       </div>
       <div id='footer'>
         <div className='container text-center'>
           <p>
-            &copy; 2020 Issaaf Kattan React Land Page Template. Design by{' '}
+            &copy; {new Date().getFullYear()} Jose Riquelme & Jakub Nieznalski UG. Design by{' '}
             <a href='http://www.templatewire.com' rel='nofollow'>
               TemplateWire
             </a>

@@ -6,14 +6,15 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-  EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
-  EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
-  EMAILJS_USER_ID: ${{ secrets.EMAILJS_USER_ID }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+  env:
+    EMAILJS_SERVICE_ID: ${{ SECRETS.EMAILJS_SERVICE_ID }}
+    EMAILJS_TEMPLATE_ID: ${{ SECRETS.EMAILJS_TEMPLATE_ID }}
+    EMAILJS_USER_ID: ${{ SECRETS.EMAILJS_USER_ID }}
     
     steps:
     - uses: actions/checkout@v2

@@ -30,7 +30,7 @@ export const Contact = (props) => {
     setSending(true)
 
     e.preventDefault()
-    
+    console.log(emailjs_service_id, emailjs_template_id, e.target, emailjs_user_id)
     emailjs
       .sendForm(
         emailjs_service_id, emailjs_template_id, e.target, emailjs_user_id
@@ -44,6 +44,7 @@ export const Contact = (props) => {
         (error) => {
           clearState()
           setError(true)
+          setSending(false)
         }
       )
   }

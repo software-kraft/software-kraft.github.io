@@ -21,6 +21,7 @@ jobs:
       - name: Install Packages
         run: npm install
       - name: Inject envs variables
+        env:
           EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
           EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
           EMAILJS_USER_ID: ${{ secrets.EMAILJS_USER_ID }}

@@ -7,19 +7,6 @@ on:
     branches: [master]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-  env:
-    EMAILJS_SERVICE_ID: ${{ SECRETS.EMAILJS_SERVICE_ID }}
-    EMAILJS_TEMPLATE_ID: ${{ SECRETS.EMAILJS_TEMPLATE_ID }}
-    EMAILJS_USER_ID: ${{ SECRETS.EMAILJS_USER_ID }}
-
-  steps:
-    - uses: actions/checkout@v2
-    - name: Deploy react app to github pages
-      uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
-
   deploy:
     runs-on: ubuntu-latest
     strategy:

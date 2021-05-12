@@ -20,6 +20,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install Packages
         run: npm install
+      - name: Inject envs variables
+        EMAILJS_SERVICE_ID: ${{ SECRETS.EMAILJS_SERVICE_ID }}
+        EMAILJS_TEMPLATE_ID: ${{ SECRETS.EMAILJS_TEMPLATE_ID }}
+        EMAILJS_USER_ID: ${{ SECRETS.EMAILJS_USER_ID }}
       - name: Build page
         run: npm run build
       - name: Deploy to gh-pages

@@ -25,7 +25,9 @@ jobs:
           EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
           EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
           EMAILJS_USER_ID: ${{ secrets.EMAILJS_USER_ID }}
-        run: echo "set env variables"
+        run: echo "${EMAILJS_SERVICE_ID}"
+          echo "${EMAILJS_TEMPLATE_ID}"
+          echo "${EMAILJS_USER_ID}"
       - name: Build page
         run: npm run build
       - name: Deploy to gh-pages

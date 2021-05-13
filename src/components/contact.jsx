@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import emailjs from 'emailjs-com'
 import Obfuscate from 'react-obfuscate';
+import { Impressum } from './impressum'
 
 const initialState = {
   name: '',
@@ -204,6 +205,7 @@ export const Contact = (props) => {
               TemplateWire
             </a>
           </p>
+          <Impressum />
         </div>
       </div>
     </div>

@@ -61,8 +61,7 @@ export const Impressum = () => {
             <strong>Registry entry:</strong>
             <br />
             Entry in the Commercial Register.
-            <br /> Register of companies: HambMunichurg Local Court
-            (Amtsgericht)
+            <br /> Register of companies: Munich Local Court (Amtsgericht)
             <br />
             Register No.: HRB 265255
             <br />

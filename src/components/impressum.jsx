@@ -70,8 +70,7 @@ export const Impressum = () => {
             <strong>VAT ID No.:</strong>
             <br />
             VAT ID No. pursuant to section 27 a of the German Turnover Tax Law
-            (UStG): <br />
-            (in progress)
+            (UStG): DE344487467
           </p>
           <p>
             <strong>Disclaimer</strong>

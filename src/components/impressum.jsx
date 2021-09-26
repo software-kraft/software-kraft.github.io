@@ -5,7 +5,7 @@ export const Impressum = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const customStyles = {
     content: {
-      top: "50%",
+      top: "60%",
       left: "50%",
       right: "auto",
       bottom: "auto",
@@ -22,12 +22,10 @@ export const Impressum = () => {
   }
 
   return (
-    <div>
-      <div className="container text-center">
-        <a href="#" onClick={openModal}>
-          Imprint
-        </a>
-      </div>
+    <span>
+      <a href="#" onClick={openModal}>
+        Imprint
+      </a>
 
       <Modal
         isOpen={modalIsOpen}
@@ -36,6 +34,10 @@ export const Impressum = () => {
         contentLabel="Imprint"
       >
         <div onClick={closeModal}>
+          <center>
+            <h4>IMPRINT</h4>
+          </center>
+          <hr style={{ width: "50vmin" }} />
           <p>
             <strong>Details pursuant to § 5 TMG:</strong>
             <br />
@@ -101,6 +103,6 @@ export const Impressum = () => {
           </p>
         </div>
       </Modal>
-    </div>
+    </span>
   );
 };
